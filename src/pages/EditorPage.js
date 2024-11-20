@@ -106,7 +106,7 @@ const EditorPage = () => {
                     </div>
                     <h3>Connected</h3>
                     <div className="clientsList">
-                        {clients.map((client) => (
+                        {clients && clients.map((client) => (
                             <Client
                                 key={client.socketId}
                                 username={client.username}

@@ -114,6 +114,7 @@ const Editor = ({socketRef, roomId, onCodeChange}) => {
     const editorTheme = useRecoilValue(cmtheme);
 
     useEffect(() => {
+        console.log(process.env.REACT_APP_BACKEND_URL);
         async function init() {
             editorRef.current = Codemirror.fromTextArea(
                 document.getElementById('realtimeEditor'),
@@ -130,6 +131,7 @@ const Editor = ({socketRef, roomId, onCodeChange}) => {
                 const {origin} = changes;
                 const code = instance.getValue();
                 onCodeChange(code);
+                console.log(code);
                 if (origin !== 'setValue') {
                     socketRef.current.emit(ACTIONS.CODE_CHANGE, {
                         roomId,
